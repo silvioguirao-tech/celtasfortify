@@ -15,6 +15,9 @@
 
             <div class="space-x-4">
                 @auth
+                    @if(auth()->user()->hasRole('admin'))
+                        <a href="{{ route('admin.dashboard') }}" class="text-gray-700 hover:text-green-600">Admin</a>
+                    @endif
                     <a href="{{ route('aluno.dashboard') }}" class="text-gray-700 hover:text-green-600">Dashboard</a>
 
                     <form method="POST" action="{{ route('logout') }}" class="inline">
@@ -26,6 +29,10 @@
                 @endauth
 
                 @guest
+                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-green-600">Home</a>
+                    <a href="{{ route('sobre') }}" class="text-gray-700 hover:text-green-600">Sobre</a>
+                    <a href="{{ route('cursos') }}" class="text-gray-700 hover:text-green-600">Cursos</a>
+                    <a href="{{ route('contato') }}" class="text-gray-700 hover:text-green-600">Contato</a>
                     <a href="{{ route('login') }}" class="text-gray-700 hover:text-green-600">Entrar</a>
                     <a href="{{ route('register') }}" class="text-gray-700 hover:text-green-600">Registrar</a>
                 @endguest
